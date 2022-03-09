@@ -49,15 +49,17 @@ const Articles = () => {
 
         <section className="mw7 center">
           <div>
-            {articles.map(({ topic, title, author, votes }) => {
+            {articles.map(({ topic, title, author, votes, article_id }) => {
               return (
-                <ArticleCard
-                  key={title}
-                  topic={topic}
-                  title={title}
-                  author={author}
-                  votes={votes}
-                />
+                <Link to={`/articles/${article_id}`}>
+                  <ArticleCard
+                    key={article_id}
+                    topic={topic}
+                    title={title}
+                    author={author}
+                    votes={votes}
+                  />
+                </Link>
               );
             })}
           </div>

@@ -14,3 +14,14 @@ export const fetchArticles = (topic) => {
       console.dir(err);
     });
 };
+
+export const fetchSingleArticle = (articleId) => {
+  return newsApi
+    .get(`/articles`, { params: { article_id: articleId } })
+    .then(({ data: { article } }) => {
+      return article;
+    })
+    .catch((err) => {
+      console.dir(err);
+    });
+};
