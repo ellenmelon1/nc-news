@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import OrderBy from './OrderBy';
 import SortBy from './SortBy';
 import ArticleCard from './ArticleCard';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Articles = () => {
   const navigate = useNavigate();
@@ -48,17 +48,19 @@ const Articles = () => {
         </div>
 
         <section className="mw7 center">
-          {articles.map(({ topic, title, author, votes }) => {
-            return (
-              <ArticleCard
-                key={title}
-                topic={topic}
-                title={title}
-                author={author}
-                votes={votes}
-              />
-            );
-          })}
+          <div>
+            {articles.map(({ topic, title, author, votes }) => {
+              return (
+                <ArticleCard
+                  key={title}
+                  topic={topic}
+                  title={title}
+                  author={author}
+                  votes={votes}
+                />
+              );
+            })}
+          </div>
         </section>
       </div>
     </section>
@@ -69,7 +71,7 @@ const handleClick = (value, setTopic, navigate) => {
   if (value === undefined) {
     navigate(`/articles`);
   } else {
-    navigate(`/articles?topic=${value}`);
+    navigate(`/articles/${value}`);
   }
   setTopic(value);
 };
