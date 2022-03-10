@@ -15,9 +15,9 @@ export const fetchArticles = (topic) => {
     });
 };
 
-export const fetchSingleArticle = (articleId) => {
+export const fetchSingleArticle = (article_id) => {
   return newsApi
-    .get(`/articles`, { params: { article_id: articleId } })
+    .get(`/articles/${article_id}`)
     .then(({ data: { article } }) => {
       return article;
     })
