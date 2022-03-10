@@ -56,8 +56,8 @@ export const postComment = (article_id, commentToPost, loggedIn) => {
       username: loggedIn,
       body: commentToPost,
     })
-    .then((res) => {
-      console.log(res);
+    .then(({ data: { comment } }) => {
+      return comment;
     })
     .catch((err) => {
       console.dir(err);

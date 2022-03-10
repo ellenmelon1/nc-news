@@ -27,12 +27,13 @@ const Comments = () => {
     event.preventDefault();
     setSubmitButtonMsg('Posting...');
     setDisable(true);
-    postComment(article_id, commentToPost, loggedIn);
+    postComment(article_id, commentToPost, loggedIn).then((newComment) => {
+      setComments((currComments) => {
+        return [newComment, ...currComments];
+      });
+    });
     setCommentToPost('');
-    setTimeout(() => {
-      setSubmitButtonMsg('Submit');
-      setDisable(false);
-    }, 1000);
+    setSubmitButtonMsg('Submit');
   };
 
   return (
