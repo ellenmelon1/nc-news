@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { fetchSingleArticle } from '../api';
 import { useParams } from 'react-router-dom';
 import { updateVotes } from '../api';
+import Comments from './Comments';
 
 const SingleArticle = () => {
   const [article, setArticle] = useState();
@@ -59,6 +60,7 @@ const SingleArticle = () => {
           </button>
         </div>
       </article>
+      <Comments article_id={article_id} />
     </section>
   );
 };

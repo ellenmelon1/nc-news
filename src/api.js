@@ -38,3 +38,14 @@ export const fetchSingleArticle = (article_id) => {
       console.dir(err);
     });
 };
+
+export const fetchComments = (article_id) => {
+  return newsApi
+    .get(`/articles/${article_id}/comments`)
+    .then(({ data: { comments } }) => {
+      return comments;
+    })
+    .catch((err) => {
+      console.dir(err);
+    });
+};
