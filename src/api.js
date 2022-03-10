@@ -49,3 +49,17 @@ export const fetchComments = (article_id) => {
       console.dir(err);
     });
 };
+
+export const postComment = (article_id, commentToPost) => {
+  return newsApi
+    .post(`/articles/${article_id}/comments`, {
+      username: 'tickle122',
+      body: commentToPost,
+    })
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.dir(err);
+    });
+};
