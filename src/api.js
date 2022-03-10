@@ -15,6 +15,12 @@ export const fetchArticles = (topic) => {
     });
 };
 
+
+export const updateVotes = (article_id, change) => {
+  return newsApi.patch(`/articles/${article_id}/comments`, {
+    inc_votes: change,
+  });
+
 export const fetchSingleArticle = (article_id) => {
   return newsApi
     .get(`/articles/${article_id}`)
