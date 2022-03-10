@@ -8,12 +8,10 @@ import { Link, useParams } from 'react-router-dom';
 const Articles = () => {
   const [articles, setArticles] = useState([]);
   const { topic } = useParams();
-  console.log(topic);
 
   useEffect(() => {
     fetchArticles(topic)
       .then((articles) => {
-        console.log(articles);
         setArticles(articles);
       })
       .catch((err) => {

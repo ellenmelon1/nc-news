@@ -1,7 +1,7 @@
 import media from '../Media/profile_pic.jpeg';
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ loggedIn }) => {
   return (
     <>
       <section className="header mw7 center">
@@ -14,7 +14,7 @@ const Header = () => {
           </div>
           <div className="header__user">
             <img src={media} alt="profile pic" className="header__avatar"></img>
-            <p>butter_bridge</p>
+            <p>{loggedIn}</p>
           </div>
         </>
       </section>
