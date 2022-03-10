@@ -14,3 +14,7 @@ export const fetchArticles = (topic) => {
       console.dir(err);
     });
 };
+
+export const updateVotes = (change) => {
+  return newsApi.patch('/articles/:article_id/comments', { inc_votes: change });
+};
