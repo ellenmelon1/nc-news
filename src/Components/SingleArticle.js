@@ -32,8 +32,9 @@ const SingleArticle = () => {
           <p className="f6 lh-copy gray mv0">
             {new Date(article.created_at).toLocaleDateString('en-gb')}
           </p>
+          <button>^</button>
           <p className="f6 db gray">Votes: {article.votes}</p>
-          <p className="f6 db gray"></p>
+          <button>v</button>
         </div>
       </article>
     </section>
