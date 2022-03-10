@@ -3,12 +3,12 @@ import { useState, useEffect } from 'react';
 import OrderBy from './OrderBy';
 import SortBy from './SortBy';
 import ArticleCard from './ArticleCard';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const Articles = () => {
-  const navigate = useNavigate();
   const [articles, setArticles] = useState([]);
-  const [topic, setTopic] = useState(undefined);
+  const { topic } = useParams();
+  console.log(topic);
 
   useEffect(() => {
     fetchArticles(topic)
@@ -28,18 +28,18 @@ const Articles = () => {
             Popular posts
           </h3>
           <div className="articles__navbar__buttons">
-            <button onClick={() => handleClick(undefined, setTopic, navigate)}>
-              All
-            </button>
-            <button onClick={() => handleClick('coding', setTopic, navigate)}>
-              Coding
-            </button>
-            <button onClick={() => handleClick('football', setTopic, navigate)}>
-              Football
-            </button>
-            <button onClick={() => handleClick('cooking', setTopic, navigate)}>
-              Cooking
-            </button>
+            <Link to="/articles">
+              <button>All</button>
+            </Link>
+            <Link to="/articles/topics/coding">
+              <button>Coding</button>
+            </Link>
+            <Link to="/articles/topics/football">
+              <button>Football</button>
+            </Link>
+            <Link to="/articles/topics/cooking">
+              <button>Cooking</button>
+            </Link>
           </div>
           <div className="articles__navbar__dropdowns">
             <SortBy />
@@ -49,15 +49,17 @@ const Articles = () => {
 
         <section className="mw7 center">
           <div>
-            {articles.map(({ topic, title, author, votes }) => {
+            {articles.map(({ topic, title, author, votes, article_id }) => {
               return (
-                <ArticleCard
-                  key={title}
-                  topic={topic}
-                  title={title}
-                  author={author}
-                  votes={votes}
-                />
+                <Link to={'/articles/' + article_id} key={article_id}>
+                  <ArticleCard
+                    key={article_id}
+                    topic={topic}
+                    title={title}
+                    author={author}
+                    votes={votes}
+                  />
+                </Link>
               );
             })}
           </div>
@@ -65,15 +67,6 @@ const Articles = () => {
       </div>
     </section>
   );
-};
-
-const handleClick = (value, setTopic, navigate) => {
-  if (value === undefined) {
-    navigate(`/articles`);
-  } else {
-    navigate(`/articles/${value}`);
-  }
-  setTopic(value);
 };
 
 export default Articles;
