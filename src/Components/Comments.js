@@ -34,6 +34,7 @@ const Comments = () => {
     });
     setCommentToPost('');
     setSubmitButtonMsg('Submit');
+    setDisable(false);
   };
 
   return (

@@ -1,4 +1,9 @@
+import { loggedInUser } from './contexts';
+import { useContext } from 'react';
+
 const CommentCard = ({ body, created_at, author, votes }) => {
+  const { loggedIn, setLoggedIn } = useContext(loggedInUser);
+  console.log(loggedIn);
   return (
     <article className="articleCards pv4 bt bb b--black-10 ph3 ph0-l">
       <div className=" w-100 pr3-ns order-2 order-1-ns">
@@ -8,6 +13,7 @@ const CommentCard = ({ body, created_at, author, votes }) => {
         </p>
         <p className="f6 lh-copy gray mv0">Author: {author}</p>
         <p className="f6 lh-copy gray mv0">Votes: {votes}</p>
+        <button visible="hide">Delete comment</button>
       </div>
     </article>
   );
