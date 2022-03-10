@@ -13,6 +13,7 @@ const Articles = () => {
   useEffect(() => {
     fetchArticles(topic)
       .then((articles) => {
+        console.log(articles);
         setArticles(articles);
       })
       .catch((err) => {
