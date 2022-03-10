@@ -50,10 +50,10 @@ export const fetchComments = (article_id) => {
     });
 };
 
-export const postComment = (article_id, commentToPost) => {
+export const postComment = (article_id, commentToPost, loggedIn) => {
   return newsApi
     .post(`/articles/${article_id}/comments`, {
-      username: 'tickle122',
+      username: loggedIn,
       body: commentToPost,
     })
     .then((res) => {
