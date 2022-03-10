@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './Components/Header';
 import Articles from './Components/Articles';
+import SingleArticle from './Components/SingleArticle.js';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Articles />} />
           <Route path="/articles" element={<Articles />} />
-          <Route path="/articles/:bananas" element={<Articles />} />
+          <Route path="/articles/topics/:topic" element={<Articles />} />
+          <Route path="/articles/:article_id" element={<SingleArticle />} />
         </Routes>
       </div>
     </BrowserRouter>
