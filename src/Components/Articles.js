@@ -21,24 +21,16 @@ const Articles = () => {
 
   return (
     <section className="mw7 center">
-      <div className="articles">
-        <div className="articles__navbar">
+      <div className="articles ">
+        <div className="articles__navbar nowrap overflow-x-auto">
           <h3 className="articles__navbar__header athelas ph3 ph0-l">
             Popular posts
           </h3>
           <div className="articles__navbar__buttons">
-            <Link to="/articles">
-              <button>All</button>
-            </Link>
-            <Link to="/articles/topics/coding">
-              <button>Coding</button>
-            </Link>
-            <Link to="/articles/topics/football">
-              <button>Football</button>
-            </Link>
-            <Link to="/articles/topics/cooking">
-              <button>Cooking</button>
-            </Link>
+            <Link to="/articles">All</Link>
+            <Link to="/articles/topics/coding">Coding</Link>
+            <Link to="/articles/topics/football">Football</Link>
+            <Link to="/articles/topics/cooking">Cooking</Link>
           </div>
           <div className="articles__navbar__dropdowns">
             <SortBy />

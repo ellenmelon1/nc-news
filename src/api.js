@@ -63,3 +63,9 @@ export const postComment = (article_id, commentToPost, loggedIn) => {
       console.dir(err);
     });
 };
+
+export const deleteComment = (commentId) => {
+  return newsApi.delete(`/comments/${commentId}`).catch((err) => {
+    console.dir(err);
+  });
+};

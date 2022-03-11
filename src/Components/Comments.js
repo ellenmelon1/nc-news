@@ -21,7 +21,7 @@ const Comments = () => {
       .catch((err) => {
         console.dir(err);
       });
-  }, [article_id]);
+  }, [article_id, comments]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -59,6 +59,7 @@ const Comments = () => {
           return (
             <CommentCard
               key={comment_id}
+              commentId={comment_id}
               body={body}
               created_at={created_at}
               author={author}
