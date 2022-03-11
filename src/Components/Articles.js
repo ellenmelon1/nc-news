@@ -1,23 +1,26 @@
 import { fetchArticles } from '../api';
 import { useState, useEffect } from 'react';
-import OrderBy from './OrderBy';
+import ToggleSwitch from './ToggleSwitch';
 import SortBy from './SortBy';
 import ArticleCard from './ArticleCard';
 import { Link, useParams } from 'react-router-dom';
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
+  const [sortBy, setSortBy] = useState();
+  const [order, setOrder] = useState('desc');
+
   const { topic } = useParams();
 
   useEffect(() => {
-    fetchArticles(topic)
+    fetchArticles(topic, sortBy, order)
       .then((articles) => {
         setArticles(articles);
       })
       .catch((err) => {
         console.dir(err);
       });
-  }, [topic]);
+  }, [topic, sortBy, order]);
 
   return (
     <section className="mw7 center">
@@ -33,26 +36,29 @@ const Articles = () => {
             <Link to="/articles/topics/cooking">Cooking</Link>
           </div>
           <div className="articles__navbar__dropdowns">
-            <SortBy />
-            <OrderBy />
+            <SortBy setSortBy={setSortBy} />
+            <ToggleSwitch label={'Order:'} setOrder={setOrder} />
           </div>
         </div>
 
         <section className="mw7 center">
           <div>
-            {articles.map(({ topic, title, author, votes, article_id }) => {
-              return (
-                <Link to={'/articles/' + article_id} key={article_id}>
-                  <ArticleCard
-                    key={article_id}
-                    topic={topic}
-                    title={title}
-                    author={author}
-                    votes={votes}
-                  />
-                </Link>
-              );
-            })}
+            {articles.map(
+              ({ comment_count, topic, title, author, votes, article_id }) => {
+                return (
+                  <Link to={'/articles/' + article_id} key={article_id}>
+                    <ArticleCard
+                      key={article_id}
+                      topic={topic}
+                      title={title}
+                      author={author}
+                      votes={votes}
+                      commentCount={comment_count}
+                    />
+                  </Link>
+                );
+              }
+            )}
           </div>
         </section>
       </div>
