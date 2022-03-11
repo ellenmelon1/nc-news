@@ -20,11 +20,9 @@ const CommentCard = ({
     setDisable(true);
     deleteComment(commentId).then(() => {
       setComments((currComments) => {
-        const copyComments = [...currComments];
-        const newComments = copyComments.filter(
+        return currComments.filter(
           (comment) => comment.comment_id !== commentId
         );
-        return newComments;
       });
     });
   };
