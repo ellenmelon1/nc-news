@@ -10,7 +10,7 @@ const Comments = () => {
   const [commentToPost, setCommentToPost] = useState('');
   const [submitButtonMsg, setSubmitButtonMsg] = useState('Submit');
   const [disable, setDisable] = useState(false);
-  const { loggedIn, setLoggedIn } = useContext(loggedInUser);
+  const { loggedIn } = useContext(loggedInUser);
   const { article_id } = useParams();
 
   useEffect(() => {
