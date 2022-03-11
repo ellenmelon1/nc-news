@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-const ErrorPage = ({ error }) => {
+const ErrorPage = ({ error = 'page not found' }) => {
   return (
     <div>
-      <h2>Uh oh, that page doesn't exist!{error}</h2>
+      <h2>{error}</h2>
     </div>
   );
 };

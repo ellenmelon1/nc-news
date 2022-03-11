@@ -3,22 +3,29 @@ import { useState, useEffect } from 'react';
 import OrderBy from './OrderBy';
 import SortBy from './SortBy';
 import ArticleCard from './ArticleCard';
+import ErrorPage from './ErrorPage';
 import { Link, useParams } from 'react-router-dom';
 
-const Articles = ({ setError }) => {
+const Articles = ({ setError, error }) => {
   const [articles, setArticles] = useState([]);
   const { topic } = useParams();
 
   useEffect(() => {
+    console.log('this is error before I reassigned it: ', error);
     fetchArticles(topic)
       .then((articles) => {
         setArticles(articles);
       })
       .catch((err) => {
         console.dir(err);
-        setError();
+        setError(err.response.data.msg);
+        console.log(err);
       });
   }, [topic]);
+
+  if (error) {
+    return <ErrorPage error={error} />;
+  }
 
   return (
     <section className="mw7 center">

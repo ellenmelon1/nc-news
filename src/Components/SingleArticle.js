@@ -3,6 +3,7 @@ import { fetchSingleArticle } from '../api';
 import { useParams } from 'react-router-dom';
 import { updateVotes } from '../api';
 import Comments from './Comments';
+import ErrorPage from './ErrorPage';
 
 const SingleArticle = () => {
   const [article, setArticle] = useState();
@@ -18,7 +19,11 @@ const SingleArticle = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.dir(err);
+        const error = err;
+        console.dir(error);
+
+        console.dir(error.response);
+        return <ErrorPage error={error.response.data.msg} />;
       });
   }, [article_id]);
 
