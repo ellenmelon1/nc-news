@@ -5,7 +5,7 @@ import SortBy from './SortBy';
 import ArticleCard from './ArticleCard';
 import { Link, useParams } from 'react-router-dom';
 
-const Articles = () => {
+const Articles = ({ setError }) => {
   const [articles, setArticles] = useState([]);
   const { topic } = useParams();
 
@@ -16,6 +16,7 @@ const Articles = () => {
       })
       .catch((err) => {
         console.dir(err);
+        setError();
       });
   }, [topic]);
 
