@@ -10,7 +10,7 @@ const Comments = () => {
   const [commentToPost, setCommentToPost] = useState('');
   const [submitButtonMsg, setSubmitButtonMsg] = useState('Submit');
   const [disable, setDisable] = useState(false);
-  const { loggedIn, setLoggedIn } = useContext(loggedInUser);
+  const { loggedIn } = useContext(loggedInUser);
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -34,6 +34,7 @@ const Comments = () => {
     });
     setCommentToPost('');
     setSubmitButtonMsg('Submit');
+    setDisable(false);
   };
 
   return (
@@ -57,7 +58,9 @@ const Comments = () => {
         {comments.map(({ body, created_at, author, votes, comment_id }) => {
           return (
             <CommentCard
+              setComments={setComments}
               key={comment_id}
+              commentId={comment_id}
               body={body}
               created_at={created_at}
               author={author}
