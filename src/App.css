@@ -38,3 +38,8 @@
 .articles__navbar {
   background-color: #bebec5;
 }
+
+.SingleArticle__votes {
+  display: flex;
+  flex-direction: row;
+}

@@ -14,7 +14,6 @@ const Articles = () => {
   const [sortBy, setSortBy] = useState();
   const [order, setOrder] = useState('desc');
 
-
   const { topic } = useParams();
 
   useEffect(() => {
@@ -30,39 +29,68 @@ const Articles = () => {
   if (errorMsg) return <ErrorPage error={errorMsg} />;
 
   return (
-    <section className="mw7 center">
-      <div className="articles ">
-        <div className="articles__navbar nowrap overflow-x-auto">
-          <h3 className="articles__navbar__header athelas ph3 ph0-l">
-            Popular posts
-          </h3>
-          <div className="articles__navbar__buttons">
-            <Link to="/articles">All</Link>
-            <Link to="/articles/topics/coding">Coding</Link>
-            <Link to="/articles/topics/football">Football</Link>
-            <Link to="/articles/topics/cooking">Cooking</Link>
+    <section className="mw7 center athelas">
+      <div className="articles">
+        <div className="articles__navbar pv3">
+          <div className="articles__navbar__buttons cf">
+            <Link
+              to="/articles"
+              className="fl w-25 tc f5 fw5 db black no-underline underline-hover"
+            >
+              All
+            </Link>
+            <Link
+              to="/articles/topics/coding"
+              className="fl w-25 tc f5 fw5 db black no-underline underline-hover"
+            >
+              Coding
+            </Link>
+            <Link
+              to="/articles/topics/football"
+              className="fl w-25 tc f5 fw5 db black no-underline underline-hover"
+            >
+              Football
+            </Link>
+            <Link
+              to="/articles/topics/cooking"
+              className="fl w-25 tc f5 fw5 db black no-underline underline-hover"
+            >
+              Cooking
+            </Link>
           </div>
-          <div className="articles__navbar__dropdowns">
-            <SortBy setSortBy={setSortBy} />
-            <ToggleSwitch label={'Order:'} setOrder={setOrder} />
+          <div className="articles__navbar__dropdowns pt3 pb3 pl4">
+            <div>
+              <SortBy setSortBy={setSortBy} />
+            </div>
+            <div>
+              <ToggleSwitch label={'Order:'} setOrder={setOrder} />
+            </div>
           </div>
         </div>
 
         <section className="mw7 center">
           <div>
             {articles.map(
-              ({ comment_count, topic, title, author, votes, article_id }) => {
+              ({
+                comment_count,
+                topic,
+                title,
+                author,
+                votes,
+                article_id,
+                created_at,
+              }) => {
                 return (
-                  <Link to={'/articles/' + article_id} key={article_id}>
-                    <ArticleCard
-                      key={article_id}
-                      topic={topic}
-                      title={title}
-                      author={author}
-                      votes={votes}
-                      commentCount={comment_count}
-                    />
-                  </Link>
+                  <ArticleCard
+                    key={article_id}
+                    topic={topic}
+                    title={title}
+                    author={author}
+                    votes={votes}
+                    commentCount={comment_count}
+                    articleId={article_id}
+                    createdAt={created_at}
+                  />
                 );
               }
             )}

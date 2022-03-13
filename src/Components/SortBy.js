@@ -1,7 +1,9 @@
 const SortBy = ({ setSortBy }) => {
   return (
     <form>
-      <label htmlFor="sortBy">Sort by:</label>
+      <label htmlFor="sortBy" className="ph3">
+        Sort by:
+      </label>
       <select
         name="sortBy"
         onChange={(e) => {

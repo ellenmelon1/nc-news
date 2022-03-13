@@ -9,7 +9,7 @@ const ToggleSwitch = ({ label, setOrder }) => {
   };
 
   return (
-    <div className="container">
+    <div className="container ph3 pv2">
       {label}{' '}
       <div className="toggle-switch">
         <input

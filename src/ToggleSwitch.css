@@ -35,13 +35,13 @@
 .inner:before {
   content: 'asc';
   padding-left: 10px;
-  background-color: #060;
+  background-color: #e86252;
   color: #fff;
 }
 .inner:after {
   content: 'desc';
   padding-right: 10px;
-  background-color: #bbb;
+  background-color: grey;
   color: #fff;
   text-align: right;
 }

@@ -39,18 +39,25 @@ const Comments = () => {
 
   return (
     <section className="mw7 center">
-      <h2 className="articles__navbar__header athelas ph3 ph0-l">Comments</h2>
+      <h2 className="articles__navbar__header athelas ph5 ">Comments</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="comment_input">Post a comment:</label>
+        <label htmlFor="comment_input" className="f6 b db mb3 ph5">
+          Post a comment:
+        </label>
         <textarea
           type="text"
           name="comment_input"
+          className="b db ml5"
           value={commentToPost}
           onChange={(event) => {
             setCommentToPost(event.target.value);
           }}
         ></textarea>
-        <button type="submit" disabled={disable}>
+        <button
+          type="submit"
+          className="athelas f6 b db mb3 ml5 mt2 pv2 ph3 f6 link dim br3 ph3 pv2 mb2 dib white bg-gray"
+          disabled={disable}
+        >
           {submitButtonMsg}
         </button>
       </form>
