@@ -6,26 +6,22 @@ import ArticleCard from './ArticleCard';
 import ErrorPage from './ErrorPage';
 import { Link, useParams } from 'react-router-dom';
 
-const Articles = ({ setError, error }) => {
+const Articles = () => {
   const [articles, setArticles] = useState([]);
+  const [errorMsg, setErrorMsg] = useState(null);
   const { topic } = useParams();
 
   useEffect(() => {
-    console.log('this is error before I reassigned it: ', error);
     fetchArticles(topic)
       .then((articles) => {
         setArticles(articles);
       })
       .catch((err) => {
-        console.dir(err);
-        setError(err.response.data.msg);
-        console.log(err);
+        setErrorMsg(err.msg);
       });
   }, [topic]);
 
-  if (error) {
-    return <ErrorPage error={error} />;
-  }
+  if (errorMsg) return <ErrorPage error={errorMsg} />;
 
   return (
     <section className="mw7 center">

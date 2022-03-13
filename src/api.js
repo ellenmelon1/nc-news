@@ -11,7 +11,8 @@ export const fetchArticles = (topic) => {
       return articles;
     })
     .catch((err) => {
-      console.dir(err);
+      console.log(err);
+      throw new Error(err.response.data.msg);
     });
 };
 
@@ -24,7 +25,7 @@ export const updateVotes = (article_id, change) => {
       console.log(res);
     })
     .catch((err) => {
-      console.dir(err);
+      throw new Error(err.response.data.msg);
     });
 };
 
@@ -35,7 +36,7 @@ export const fetchSingleArticle = (article_id) => {
       return article;
     })
     .catch((err) => {
-      console.dir(err);
+      throw new Error(err.response.data.msg);
     });
 };
 
@@ -46,7 +47,7 @@ export const fetchComments = (article_id) => {
       return comments;
     })
     .catch((err) => {
-      console.dir(err);
+      throw new Error(err.response.data.msg);
     });
 };
 
@@ -60,12 +61,12 @@ export const postComment = (article_id, commentToPost, loggedIn) => {
       return comment;
     })
     .catch((err) => {
-      console.dir(err);
+      throw new Error(err.response.data.msg);
     });
 };
 
 export const deleteComment = (commentId) => {
   return newsApi.delete(`/comments/${commentId}`).catch((err) => {
-    console.dir(err);
+    throw new Error(err.response.data.msg);
   });
 };

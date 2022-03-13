@@ -9,6 +9,7 @@ const SingleArticle = () => {
   const [article, setArticle] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [votes, setVotes] = useState(0);
+  const [errorMsg, setErrorMsg] = useState(null);
   let { article_id } = useParams();
 
   useEffect(() => {
@@ -19,11 +20,8 @@ const SingleArticle = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        const error = err;
-        console.dir(error);
-
-        console.dir(error.response);
-        return <ErrorPage error={error.response.data.msg} />;
+        setErrorMsg(err.message);
+        setIsLoading(false);
       });
   }, [article_id]);
 
@@ -35,6 +33,7 @@ const SingleArticle = () => {
     });
   };
 
+  if (errorMsg) return <ErrorPage error={errorMsg} />;
   if (isLoading) return <p className="f5 f4-l lh-copy athelas">Loading...</p>;
   return (
     <section className="mw7 center">
