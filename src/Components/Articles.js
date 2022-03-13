@@ -3,12 +3,17 @@ import { useState, useEffect } from 'react';
 import ToggleSwitch from './ToggleSwitch';
 import SortBy from './SortBy';
 import ArticleCard from './ArticleCard';
+import ErrorPage from './ErrorPage';
 import { Link, useParams } from 'react-router-dom';
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
+
+  const [errorMsg, setErrorMsg] = useState(null);
+
   const [sortBy, setSortBy] = useState();
   const [order, setOrder] = useState('desc');
+
 
   const { topic } = useParams();
 
@@ -18,9 +23,11 @@ const Articles = () => {
         setArticles(articles);
       })
       .catch((err) => {
-        console.dir(err);
+        setErrorMsg(err.msg);
       });
   }, [topic, sortBy, order]);
+
+  if (errorMsg) return <ErrorPage error={errorMsg} />;
 
   return (
     <section className="mw7 center">

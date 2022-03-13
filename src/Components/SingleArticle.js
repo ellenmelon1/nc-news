@@ -3,11 +3,13 @@ import { fetchSingleArticle } from '../api';
 import { useParams } from 'react-router-dom';
 import { updateVotes } from '../api';
 import Comments from './Comments';
+import ErrorPage from './ErrorPage';
 
 const SingleArticle = () => {
   const [article, setArticle] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [votes, setVotes] = useState(0);
+  const [errorMsg, setErrorMsg] = useState(null);
   let { article_id } = useParams();
 
   useEffect(() => {
@@ -18,7 +20,8 @@ const SingleArticle = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.dir(err);
+        setErrorMsg(err.message);
+        setIsLoading(false);
       });
   }, [article_id]);
 
@@ -30,6 +33,7 @@ const SingleArticle = () => {
     });
   };
 
+  if (errorMsg) return <ErrorPage error={errorMsg} />;
   if (isLoading) return <p className="f5 f4-l lh-copy athelas">Loading...</p>;
   return (
     <section className="mw7 center">
