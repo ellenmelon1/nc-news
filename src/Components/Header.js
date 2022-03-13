@@ -6,7 +6,10 @@ const Header = ({ loggedIn }) => {
     <section className="header mw7 center">
       <div className="header__header">
         <Link to="/">Home</Link>
-        <h1 className="header__header athelas f1 f-headline-l fw1 i white-60">
+        <h1
+          className="header__header athelas 
+        f1 f-headline-l fw1 i white-60 pv1"
+        >
           NC News
         </h1>
       </div>

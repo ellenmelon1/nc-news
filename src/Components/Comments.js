@@ -40,14 +40,14 @@ const Comments = () => {
   return (
     <section className="mw7 center">
       <h2 className="articles__navbar__header athelas ph5 ">Comments</h2>
-      <form onSubmit={handleSubmit}>
+      <form className=" black-80" onSubmit={handleSubmit}>
         <label htmlFor="comment_input" className="f6 b db mb3 ph5">
           Post a comment:
         </label>
         <textarea
           type="text"
           name="comment_input"
-          className="b db ml5"
+          className="f6 b db ml5"
           value={commentToPost}
           onChange={(event) => {
             setCommentToPost(event.target.value);
