@@ -35,26 +35,26 @@ const Articles = () => {
           <div className="articles__navbar__buttons cf">
             <Link
               to="/articles"
-              className="fl w-25 tc
+              className="nav-links fl w-25 tc
                f5 fw5 db black no-underline underline-hover"
             >
               All
             </Link>
             <Link
               to="/articles/topics/coding"
-              className="fl w-25 tc f5 fw5 db black no-underline underline-hover"
+              className="nav-links fl w-25 tc f5 fw5 db black no-underline underline-hover"
             >
               Coding
             </Link>
             <Link
               to="/articles/topics/football"
-              className="fl w-25 tc f5 fw5 db black no-underline underline-hover"
+              className="nav-links fl w-25 tc f5 fw5 db black no-underline underline-hover"
             >
               Football
             </Link>
             <Link
               to="/articles/topics/cooking"
-              className="fl w-25 tc f5 fw5 db black no-underline underline-hover"
+              className="nav-links fl w-25 tc f5 fw5 db black no-underline underline-hover"
             >
               Cooking
             </Link>

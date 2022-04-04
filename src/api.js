@@ -10,6 +10,7 @@ export const fetchArticles = (topic, sortBy, order) => {
       params: { topic: topic, sort_by: sortBy, order: order },
     })
     .then(({ data: { articles } }) => {
+      console.log(articles);
       return articles;
     })
     .catch((err) => {

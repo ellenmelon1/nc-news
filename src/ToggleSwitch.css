@@ -4,6 +4,7 @@
   display: inline-block;
   text-align: left;
   top: 8px;
+  margin-left: 15px;
 }
 .checkbox {
   display: none;

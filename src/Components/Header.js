@@ -19,7 +19,7 @@ const Header = ({ loggedIn }) => {
           className="header__header athelas 
         f1 fw1 white-80"
         >
-          NC News
+          Northcoders News &#x1f5de;
         </h1>
       </div>
     </section>
