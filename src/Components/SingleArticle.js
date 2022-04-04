@@ -34,7 +34,7 @@ const SingleArticle = () => {
   return (
     <section className="mw7 center">
       <article className="pv4 bt bb b--black-10 ph3 ph0-l singleArticle">
-        <div className="w-100 ph5">
+        <div className="singleArticle w-100 ph5">
           <h3 className="athelas ph0-l">{article.topic}</h3>
 
           <h1 className="athelas ph0-l">{article.title}</h1>

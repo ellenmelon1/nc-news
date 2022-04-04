@@ -13,7 +13,6 @@ export const fetchArticles = (topic, sortBy, order) => {
       return articles;
     })
     .catch((err) => {
-      console.log(err);
       throw new Error(err.response.data.msg);
     });
 };
@@ -22,9 +21,6 @@ export const updateVotes = (article_id, change) => {
   return newsApi
     .patch(`/articles/${article_id}`, {
       inc_votes: change,
-    })
-    .then((res) => {
-      console.log(res);
     })
     .catch((err) => {
       throw new Error(err.response.data.msg);

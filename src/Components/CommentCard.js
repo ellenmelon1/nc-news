@@ -28,7 +28,7 @@ const CommentCard = ({
   };
 
   return (
-    <article className="articleCards pv4 bt bb b--black-10 ph5">
+    <article className="commentCard articleCards pv4 bt bb b--black-10 ph5">
       <div className=" w-100 pr3-ns order-2 order-1-ns">
         <p className="f5 f4-l lh-copy athelas">{body}</p>
         <p className="f6 lh-copy gray mv0">
@@ -38,6 +38,7 @@ const CommentCard = ({
         <p className="f6 lh-copy gray mv0">Votes: {votes}</p>
         {author === loggedIn ? (
           <button
+            className="deleteCommentButton"
             onClick={(event) => {
               handleClick(event, commentId);
             }}
