@@ -8,6 +8,9 @@ const SingleArticle = () => {
   const [article, setArticle] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [votes, setVotes] = useState(0);
+  const [downvoteButtonStatus, setDownvoteButtonStatus] = useState(false);
+  const [upvoteButtonStatus, setUpvoteButtonStatus] = useState(false);
+
   let { article_id } = useParams();
 
   useEffect(() => {
@@ -48,17 +51,60 @@ const SingleArticle = () => {
           <div className="SingleArticle__votes">
             <p className="f6 lh-copy gray mv0 pv2 ph0-l">Votes: {votes}</p>
             <button
-              className="f6 lh-copy gray ph3 pv1 ml3 dim br3 ba bw1 ph3 pv2 mb2 dib mid-gray"
+              className={`downvoteButtonStatus-${downvoteButtonStatus} f6 lh-copy gray ph3 pv1 ml3 dim br3 ba bw1 ph3 pv2 mb2 dib mid-gray`}
               onClick={() => {
-                handleClick(-1);
+                if (
+                  upvoteButtonStatus === false &&
+                  downvoteButtonStatus === false
+                ) {
+                  setDownvoteButtonStatus(true);
+                  handleClick(-1);
+                }
+                if (
+                  upvoteButtonStatus === false &&
+                  downvoteButtonStatus === true
+                ) {
+                  setDownvoteButtonStatus(false);
+                  handleClick(1);
+                }
+                if (
+                  upvoteButtonStatus === true &&
+                  downvoteButtonStatus === false
+                ) {
+                  setDownvoteButtonStatus(true);
+                  setUpvoteButtonStatus(false);
+                  handleClick(-2);
+                }
+                // if(upvoteButtonStatus === true && downvoteButtonStatus === true) should never happen
               }}
             >
               &#128078;
             </button>
             <button
-              className="f6 lh-copy gray ph3 pv1 ml3 dim br3 ba bw1 ph3 pv2 mb2 dib mid-gray"
+              className={`upvoteButtonStatus-${upvoteButtonStatus} f6 lh-copy gray ph3 pv1 ml3 dim br3 ba bw1 ph3 pv2 mb2 dib mid-gray`}
               onClick={() => {
-                handleClick(1);
+                if (
+                  downvoteButtonStatus === false &&
+                  upvoteButtonStatus === false
+                ) {
+                  handleClick(1);
+                  setUpvoteButtonStatus(true);
+                }
+                if (
+                  downvoteButtonStatus === true &&
+                  upvoteButtonStatus === false
+                ) {
+                  handleClick(2);
+                  setUpvoteButtonStatus(true);
+                  setDownvoteButtonStatus(false);
+                }
+                if (
+                  upvoteButtonStatus === true &&
+                  downvoteButtonStatus === false
+                ) {
+                  setUpvoteButtonStatus(false);
+                  handleClick(-1);
+                }
               }}
             >
               &#128077;
