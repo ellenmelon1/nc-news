@@ -35,7 +35,6 @@ const CommentCard = ({
           {new Date(created_at).toLocaleDateString('en-gb')}
         </p>
         <p className="f6 lh-copy gray mv0">Author: {author}</p>
-        <p className="f6 lh-copy gray mv0">Votes: {votes}</p>
         {author === loggedIn ? (
           <button
             className="deleteCommentButton"
