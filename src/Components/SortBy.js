@@ -10,10 +10,9 @@ const SortBy = ({ setSortBy }) => {
           setSortBy(e.target.value);
         }}
       >
-        <option value="all">None</option>
-        <option value="created_at">date</option>
-        <option value="comment_count">comment count</option>
-        <option value="votes">votes</option>
+        <option value="created_at">Date</option>
+        <option value="comment_count">Comments</option>
+        <option value="votes">Votes</option>
       </select>
     </form>
   );
