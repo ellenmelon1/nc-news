@@ -25,6 +25,10 @@ const Comments = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (commentToPost.length < 1) {
+      alert("Can't post an empty comment");
+      return null;
+    }
     setSubmitButtonMsg('Posting...');
     setDisable(true);
     postComment(article_id, commentToPost, loggedIn).then((newComment) => {

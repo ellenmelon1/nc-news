@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { fetchSingleArticle } from '../api';
+import ErrorPage from './ErrorPage';
 import { useParams } from 'react-router-dom';
 import { updateVotes } from '../api';
 import Comments from './Comments';
@@ -7,6 +8,7 @@ import Comments from './Comments';
 const SingleArticle = () => {
   const [article, setArticle] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [errorMsg, setErrorMsg] = useState(null);
   const [votes, setVotes] = useState(0);
   const [downvoteButtonStatus, setDownvoteButtonStatus] = useState(false);
   const [upvoteButtonStatus, setUpvoteButtonStatus] = useState(false);
@@ -21,7 +23,8 @@ const SingleArticle = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.dir(err);
+        setErrorMsg(err.message);
+        setIsLoading(false);
       });
   }, [article_id]);
 
@@ -33,7 +36,9 @@ const SingleArticle = () => {
     });
   };
 
-  if (isLoading) return <p className="f5 f4-l lh-copy athelas">Loading...</p>;
+  if (isLoading)
+    return <p className="mw7 center f5 f4-l lh-copy athelas">Loading...</p>;
+  if (errorMsg) return <ErrorPage error={errorMsg} />;
   return (
     <section className="mw7 center">
       <article className="pv4 bt bb b--black-10 ph3 ph0-l singleArticle">

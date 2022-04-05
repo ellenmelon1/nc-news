@@ -8,9 +8,8 @@ import { Link, useParams } from 'react-router-dom';
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
-
   const [sortBy, setSortBy] = useState();
   const [order, setOrder] = useState('desc');
 
@@ -20,9 +19,11 @@ const Articles = () => {
     fetchArticles(topic, sortBy, order)
       .then((articles) => {
         setArticles(articles);
+        setIsLoading(false);
       })
       .catch((err) => {
-        setErrorMsg(err.msg);
+        setErrorMsg(err.message);
+        setIsLoading(false);
       });
   }, [topic, sortBy, order]);
 

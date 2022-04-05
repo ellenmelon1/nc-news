@@ -115,6 +115,12 @@
   .nav-links {
     font-size: 1rem;
   }
+  .errorPage {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
 }
 
 /* Comments */
@@ -179,4 +185,14 @@
 
 .upvoteButtonStatus-true {
   background-color: rgb(77, 139, 77);
+}
+
+/* Error Page */
+
+.errorPage {
+  background-color: #fbfbf2;
+  padding-left: 3%;
+  padding-bottom: 1%;
+  margin-top: 2%;
+  padding-top: 1%;
 }
