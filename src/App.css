@@ -105,6 +105,23 @@
     height: 70px;
     margin-bottom: 5px;
   }
+  .upvote_button {
+    padding: 5%;
+    padding-top: -20%;
+    font-size: 0.75rem;
+    margin-top: 10%;
+  }
+
+  .downvote_button {
+    padding: 5%;
+    padding-top: -20%;
+    font-size: 0.75rem;
+    margin-top: 10%;
+  }
+  .comment_votes_text {
+    text-align: center;
+  }
+
   .deleteCommentButton {
     font-size: 0.75rem;
   }
@@ -141,6 +158,19 @@
   font-weight: bold;
 }
 
+.Comment__votes {
+  display: flex;
+}
+
+.commentCard_details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.downvote_button {
+  margin-right: 10px;
+}
+
 /* Articles */
 .articles {
   background-color: white;
@@ -161,7 +191,6 @@
 
 .SingleArticle__votes {
   display: flex;
-  flex-direction: row;
 }
 
 .articleCard-img {

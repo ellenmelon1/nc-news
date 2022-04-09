@@ -77,7 +77,6 @@ const Comments = () => {
               body={body}
               created_at={created_at}
               author={author}
-              votes={votes}
             />
           );
         })}

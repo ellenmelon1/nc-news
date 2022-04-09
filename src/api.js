@@ -27,11 +27,32 @@ export const updateVotes = (article_id, change) => {
     });
 };
 
+export const updateCommentVotes = (comment_id, change) => {
+  return newsApi
+    .patch(`/comments/${comment_id}`, {
+      inc_votes: change,
+    })
+    .catch((err) => {
+      throw new Error(err.response.data.msg);
+    });
+};
+
 export const fetchSingleArticle = (article_id) => {
   return newsApi
     .get(`/articles/${article_id}`)
     .then(({ data: { article } }) => {
       return article;
+    })
+    .catch((err) => {
+      throw new Error(err.response.data.msg);
+    });
+};
+
+export const fetchSingleComment = (comment_id) => {
+  return newsApi
+    .get(`/comments/${comment_id}`)
+    .then(({ data: { comment } }) => {
+      return comment;
     })
     .catch((err) => {
       throw new Error(err.response.data.msg);
